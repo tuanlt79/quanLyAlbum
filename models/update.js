@@ -1,9 +1,19 @@
 export class Update{
     danhSachAlbum = [];
-    themAlbum() { 
-        this.danhSachAlbum.push(linkAnh);
+    themAlbum(album) { 
+       this.danhSachAlbum.push(album);
     };
     xoaAlbum() { };
     suaAlbum() { };
-    capNhatAlbum(){};
+    capNhatAlbum() { };
+    saveAlbum() {
+        let sUpdate = JSON.stringify(this.danhSachAlbum);
+        localStorage.setItem('Album: ', sUpdate);
+    }
+    layAlbum() {
+        if (localStorage.getItem('Album: ')) {
+            let update = JSON.parse(this.danhSachAlbum);
+            this.danhSachAlbum = update;
+        }
+    };
 };

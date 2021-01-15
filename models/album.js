@@ -3,7 +3,9 @@ export class Album {
     moTa = '';
     theLoai = 0;
     tenAlbum = '';
+    constructor(){};
     hienThiAlbum() {
-        
+        return '';
     };
+    
 };
