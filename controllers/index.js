@@ -15,6 +15,65 @@ document.getElementById("btnThemAlbum").onclick = (e) => {
         album[id] = value;    
     };
     update.themAlbum(album);
+    
     //lưu vào localstoge
     update.saveAlbum();
+    taoDivDanhSach();
 };
+
+const taoDivDanhSach = () => {
+    let xuatDanhSach = '';
+    for (let album of update.danhSachAlbum) {
+        xuatDanhSach += `
+        <div class="col-md-4">
+        <div class="card mb-4 box-shadow" >
+          <div class="reponsive-img"  style="background-image: url(${album.linkAnh});">
+        </div>
+          <div class="card-body">
+            <h3>${album.tenAlbum}</h3>
+            <p class="card-text">${album.moTa}</p>
+            <p class="card-text">Thể Loại: ${album.theLoai}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-success text-white btn-sm btn-outline-secondary mr-2" onclick="suaAlbum('${album.linkAnh}')" >Chỉnh sửa</button>
+                <button type="button" class="btn btn-danger text-white btn-sm btn-outline-secondary" onclick="xoaAlbum('${album.linkAnh}')" >Xóa</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      `
+    };
+   
+    document.getElementById('xuatDanhSach').innerHTML = xuatDanhSach;
+};
+
+window.xoaAlbum = (linkAnh) => {
+    update.xoaAlbum(linkAnh);
+    update.saveAlbum();
+    taoDivDanhSach();
+    alert('Da Xoa');
+};
+window.suaAlbum = (linkAnh) => {
+    update.suaAlbum(linkAnh);
+    update.saveAlbum();
+    taoDivDanhSach();
+}
+
+document.getElementById("btnCapNhatAlbum").onclick = (e) => {
+    e.preventDefault(); // cản sự kiện submit của browser
+
+    let newAlbum = new Album();
+    let arrInput = document.querySelectorAll('.card-body .form-group input,select');
+    
+    for (let input of arrInput) {
+        let id = input.id;
+        let value = input.value;
+        newAlbum[id] = value;    
+    };
+    update.capNhatAlbum(newAlbum);
+    //lưu vào localstoge
+    update.saveAlbum();
+    taoDivDanhSach();
+};
+
