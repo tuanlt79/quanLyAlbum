@@ -1,30 +1,32 @@
-import { Album } from '../models/album.js';
-import { Update } from '../models/update.js';
+import { Album } from "../models/album.js";
+import { Update } from "../models/update.js";
 let update = new Update();
 
 document.getElementById("btnThemAlbum").onclick = (e) => {
-    e.preventDefault(); // cản sự kiện submit của browser
+  e.preventDefault(); // cản sự kiện submit của browser
 
-    let album = new Album();
+  let album = new Album();
 
-    let arrInput = document.querySelectorAll('.card-body .form-group input,select');
-    
-    for (let input of arrInput) {
-        let id = input.id;
-        let value = input.value;
-        album[id] = value;    
-    };
-    update.themAlbum(album);
-    
-    //lưu vào localstoge
-    update.saveAlbum();
-    taoDivDanhSach();
+  let arrInput = document.querySelectorAll(
+    ".card-body .form-group input,select"
+  );
+
+  for (let input of arrInput) {
+    let id = input.id;
+    let value = input.value;
+    album[id] = value;
+  }
+  update.themAlbum(album);
+
+  //lưu vào localstoge
+  update.saveAlbum();
+  taoDivDanhSach();
 };
 
 const taoDivDanhSach = () => {
-    let xuatDanhSach = '';
-    for (let album of update.danhSachAlbum) {
-        xuatDanhSach += `
+  let xuatDanhSach = "";
+  for (let album of update.danhSachAlbum) {
+    xuatDanhSach += `
         <div class="col-md-4">
         <div class="card mb-4 box-shadow" >
           <div class="reponsive-img"  style="background-image: url(${album.linkAnh});">
@@ -42,38 +44,42 @@ const taoDivDanhSach = () => {
           </div>
         </div>
       </div>
-      `
-    };
-   
-    document.getElementById('xuatDanhSach').innerHTML = xuatDanhSach;
+      `;
+  }
+
+  document.getElementById("xuatDanhSach").innerHTML = xuatDanhSach;
 };
 
 window.xoaAlbum = (linkAnh) => {
-    update.xoaAlbum(linkAnh);
-    update.saveAlbum();
-    taoDivDanhSach();
-    alert('Da Xoa');
+  update.xoaAlbum(linkAnh);
+  update.saveAlbum();
+  taoDivDanhSach();
+  alert("Da Xoa");
 };
 window.suaAlbum = (linkAnh) => {
-    update.suaAlbum(linkAnh);
-    update.saveAlbum();
-    taoDivDanhSach();
-}
-
-document.getElementById("btnCapNhatAlbum").onclick = (e) => {
-    e.preventDefault(); // cản sự kiện submit của browser
-
-    let newAlbum = new Album();
-    let arrInput = document.querySelectorAll('.card-body .form-group input,select');
-    
-    for (let input of arrInput) {
-        let id = input.id;
-        let value = input.value;
-        newAlbum[id] = value;    
-    };
-    update.capNhatAlbum(newAlbum);
-    //lưu vào localstoge
-    update.saveAlbum();
-    taoDivDanhSach();
+  update.suaAlbum(linkAnh);
+  update.saveAlbum();
+  taoDivDanhSach();
 };
 
+document.getElementById("btnCapNhatAlbum").onclick = (e) => {
+  e.preventDefault(); // cản sự kiện submit của browser
+
+  let album = new Album();
+
+  let arrInput = document.querySelectorAll(
+    ".card-body .form-group input,select"
+  );
+
+  for (let input of arrInput) {
+    let id = input.id;
+    let value = input.value;
+    album[id] = value;
+    // console.log(album[id]);
+  }
+  update.capNhatAlbum(album);
+
+  //lưu vào localstoge
+  // update.saveAlbum();
+  taoDivDanhSach();
+};
