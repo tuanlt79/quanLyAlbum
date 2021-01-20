@@ -37,8 +37,8 @@ const taoDivDanhSach = () => {
             <p class="card-text">Thể Loại: ${album.theLoai}</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <button type="button" class="btn btn-success text-white btn-sm btn-outline-secondary mr-2" onclick="suaAlbum('${album.linkAnh}')" >Chỉnh sửa</button>
-                <button type="button" class="btn btn-danger text-white btn-sm btn-outline-secondary" onclick="xoaAlbum('${album.linkAnh}')" >Xóa</button>
+                <button type="button" class="btn btn-success text-white btn-sm btn-outline-secondary mr-2" onclick="suaAlbum('${album.tenAlbum}')" >Chỉnh sửa</button>
+                <button type="button" class="btn btn-danger text-white btn-sm btn-outline-secondary" onclick="xoaAlbum('${album.tenAlbum}')" >Xóa</button>
               </div>
             </div>
           </div>
@@ -50,23 +50,26 @@ const taoDivDanhSach = () => {
   document.getElementById("xuatDanhSach").innerHTML = xuatDanhSach;
 };
 
-window.xoaAlbum = (linkAnh) => {
-  update.xoaAlbum(linkAnh);
+window.xoaAlbum = (tenAlbum) => {
+  update.xoaAlbum(tenAlbum);
   update.saveAlbum();
   taoDivDanhSach();
-  alert("Da Xoa");
+  document.getElementById("btnThemAlbum").disabled = false;
+  document.getElementById("tenAlbum").disabled = false;
 };
-window.suaAlbum = (linkAnh) => {
-  update.suaAlbum(linkAnh);
+window.suaAlbum = (tenAlbum) => {
+  document.getElementById("btnCapNhatAlbum").disabled = false;
+  document.getElementById("btnThemAlbum").disabled = true;
+  document.getElementById("tenAlbum").disabled = true;
+  update.suaAlbum(tenAlbum);
   update.saveAlbum();
   taoDivDanhSach();
 };
 
 document.getElementById("btnCapNhatAlbum").onclick = (e) => {
   e.preventDefault(); // cản sự kiện submit của browser
-
+  document.getElementById("tenAlbum").disabled = true;
   let album = new Album();
-
   let arrInput = document.querySelectorAll(
     ".card-body .form-group input,select"
   );
@@ -81,5 +84,5 @@ document.getElementById("btnCapNhatAlbum").onclick = (e) => {
 
   //lưu vào localstoge
   // update.saveAlbum();
-  taoDivDanhSach();
+  taoDivDanhSach(update.danhSachAlbum);
 };

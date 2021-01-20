@@ -3,18 +3,18 @@ export class Update {
   themAlbum(album) {
     this.danhSachAlbum.push(album);
   }
-  xoaAlbum(linkAnh) {
+  xoaAlbum(tenAlbum) {
     //findIndex: là phương thức của mảng (arr) => tìm ra vị trí thảo với biểu thức
     let index = this.danhSachAlbum.findIndex(
-      (item) => item.linkAnh === linkAnh
+      (item) => item.tenAlbum === tenAlbum
     );
     if (index !== -1) {
       this.danhSachAlbum.splice(index, 1);
     }
   }
-  suaAlbum(linkAnh) {
+  suaAlbum(tenAlbum) {
     let index = this.danhSachAlbum.findIndex(
-      (item) => item.linkAnh === linkAnh
+      (item) => item.tenAlbum === tenAlbum
     );
     let albumSua = this.danhSachAlbum[index];
 
@@ -23,11 +23,11 @@ export class Update {
     document.getElementById("theLoai").value = albumSua.theLoai;
     document.getElementById("tenAlbum").value = albumSua.tenAlbum;
   }
-  capNhatAlbum(linkAnh) {
+  capNhatAlbum(tenAlbum) {
     let index = this.danhSachAlbum.findIndex(
-      (item) => item.linkAnh === linkAnh
+      (item) => item.tenAlbum === tenAlbum
     );
-    this.danhSachAlbum[index] = linkAnh;
+    this.danhSachAlbum[index] = tenAlbum;
   }
   saveAlbum() {
     let sUpdate = JSON.stringify(this.danhSachAlbum);
