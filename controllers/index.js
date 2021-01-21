@@ -78,11 +78,11 @@ document.getElementById("btnCapNhatAlbum").onclick = (e) => {
     let id = input.id;
     let value = input.value;
     album[id] = value;
-    // console.log(album[id]);
   }
   update.capNhatAlbum(album);
 
-  //lưu vào localstoge
-  // update.saveAlbum();
+  // lưu vào localstoge
+  update.saveAlbum();
   taoDivDanhSach(update.danhSachAlbum);
+  debugger;
 };
