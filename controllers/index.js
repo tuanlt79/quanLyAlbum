@@ -80,9 +80,7 @@ document.getElementById("btnCapNhatAlbum").onclick = (e) => {
     album[id] = value;
   }
   update.capNhatAlbum(album);
-
   // lưu vào localstoge
   update.saveAlbum();
-  taoDivDanhSach(update.danhSachAlbum);
-  debugger;
+  taoDivDanhSach(album);
 };
