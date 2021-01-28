@@ -1,7 +1,7 @@
 export class Album {
   linkAnh = "";
   moTa = "";
-  theLoai = 0;
+  theLoai = "";
   tenAlbum = "";
   constructor() {}
   hienThiAlbum() {

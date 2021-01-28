@@ -29,7 +29,6 @@ export class Update {
     );
     this.danhSachAlbum[index] = tenAlbum;
   }
-
   saveAlbum() {
     let sUpdate = JSON.stringify(this.danhSachAlbum);
     localStorage.setItem("Album: ", sUpdate);

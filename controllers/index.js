@@ -65,7 +65,6 @@ window.suaAlbum = (tenAlbum) => {
   update.saveAlbum();
   taoDivDanhSach();
 };
-
 document.getElementById("btnCapNhatAlbum").onclick = (e) => {
   e.preventDefault(); // cản sự kiện submit của browser
   document.getElementById("tenAlbum").disabled = true;
@@ -73,7 +72,6 @@ document.getElementById("btnCapNhatAlbum").onclick = (e) => {
   let arrInput = document.querySelectorAll(
     ".card-body .form-group input,select"
   );
-
   for (let input of arrInput) {
     let id = input.id;
     let value = input.value;
