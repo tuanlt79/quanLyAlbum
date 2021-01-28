@@ -84,3 +84,4 @@ document.getElementById("btnCapNhatAlbum").onclick = (e) => {
   update.saveAlbum();
   taoDivDanhSach(album);
 };
+//van chua Cap Nhat Duoc
