@@ -25,7 +25,7 @@ export class Update {
   }
   capNhatAlbum(tenAlbum) {
     let index = this.danhSachAlbum.findIndex(
-      (item) => item.tenAlbum === tenAlbum
+      (item) => item.tenAlbum === tenAlbum.tenAlbum
     );
     this.danhSachAlbum[index] = tenAlbum;
   }
